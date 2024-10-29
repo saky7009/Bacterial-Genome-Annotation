@@ -1,0 +1,23 @@
+Download Rederence Sequence from NCBI
+cd assembly
+module load anaconda/3
+source activate bioinformatics
+ls
+ls SPADES_OUT/
+cleaar
+prokka
+clear
+prokka --prefix MA25 --locustag --cpus 24 --kingdom Bacteria --addgenes --protein Agy99.gbk SPADES_OUT/contigs.fasta
+ls
+clear
+ls
+ls MA25
+greep '>' MA25/MA25.faa|wc -l
+5421
+grep '>' MA25/MA25.ffn|wc =l
+5475
+grep '>' MA25/MA25.ffn | head -n 10
+grep "hypothetical protein" MA25/MA25.faa|wc -l
+2595
+grep 'IS2484' MA25/MA25.ffn
+grep 'IS2404' MA25/MA25.ffn|wc
