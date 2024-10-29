@@ -1,4 +1,4 @@
-Download Rederence Sequence from NCBI
+Download Rederence Sequence from NCBI (https://www.ncbi.nlm.nih.gov/nuccore/CP000325)
 cd assembly
 module load anaconda/3
 source activate bioinformatics
