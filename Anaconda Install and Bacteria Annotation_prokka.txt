@@ -1,0 +1,146 @@
+sudo apt-get update
+
+sudo apt-get install libgl1-mesa-glx libegl1-mesa libxrandr2 libxrandr2 libxss1 libxcursor1 libxcomposite1 libasound2 libxi6 libxtst6
+
+/mnt/c/Users/mmolla/Downloads$ la -l
+
+shasum -a 256 Anaconda3-2024.10-1-Linux-x86_64.sh
+
+chmod +x Anaconda3-2024.10-1-Linux-x86_64.sh
+
+./Anaconda3-2024.10-1-Linux-x86_64.sh
+
+yes
+
+/home/habib/anaconda3
+
+yes
+
+Thank you install Anaconda3!
+
+source ~/.bashrc
+
+conda config --set auto_activate_base False
+
+conda list
+
+conda activate
+
+conda update conda
+conda update anaconda-navigator
+
+
+.......................................
+
+
+habib@RESNR-5WS7D14:~$ conda config --add channels bioconda
+habib@RESNR-5WS7D14:~$ conda config --add channels conda-forge
+habib@RESNR-5WS7D14:~$ conda config --show channels
+channels:
+  - conda-forge
+  - bioconda
+  - https://repo.anaconda.com/pkgs/main
+  - https://repo.anaconda.com/pkgs/r
+habib@RESNR-5WS7D14:~$
+
+....................
+create an environment and install prokka in it
+..............................................
+conda create -n prokka -c bioconda -c conda-forge prokka
+
+Yes
+
+Conda activate prokka 
+
+prokka
+
+download fasta Agy99.fasta
+
+ls /mnt/c/Users/mmolla/Downloads
+
+head /mnt/c/Users/mmolla/Downloads/Agy99.fasta
+
+clear
+
+prokka
+
+clear
+
+prokka --cpus 4 --prefix Agy99 --kingdom Bacteria --locustag Agy99 /mnt/c/Users/mmolla/Downloads/Agy99.fasta
+
+clear
+
+ls /mnt/c/Users/mmolla/Downloads
+
+
+ls Agy99
+
+(prokka) habib@RESNR-5WS7D14:~$ ls Agy99
+Agy99.err  Agy99.ffn  Agy99.fsa  Agy99.gff  Agy99.sqn  Agy99.tsv
+Agy99.faa  Agy99.fna  Agy99.gbk  Agy99.log  Agy99.tbl  Agy99.txt
+
+
+cd Agy99
+
+(prokka) habib@RESNR-5WS7D14:~/Agy99$ grep '>' Agy99.faa|wc -l
+5471
+
+head Agy99.faa
+
+grep 'hypothetical' Agy99.faa
+
+clear
+
+grep 'hypothetical' Agy99.faa|wc -l
+
+2516
+
+grep 'SIGM' Agy99.faa
+
+
+(prokka) habib@RESNR-5WS7D14:~/Agy99$ grep 'SigM' Agy99.faa
+>Agy99_05512 ECF RNA polymerase sigma factor SigM
+
+(prokka) habib@RESNR-5WS7D14:~/Agy99$ grep -I 'SigM' Agy99.faa
+>Agy99_05512 ECF RNA polymerase sigma factor SigM
+
+(prokka) habib@RESNR-5WS7D14:~/Agy99$ grep -i 'SigM' Agy99.faa
+
+clear
+
+(prokka) habib@RESNR-5WS7D14:~/Agy99$ ls
+Agy99.err  Agy99.ffn  Agy99.fsa  Agy99.gff  Agy99.sqn  Agy99.tsv
+Agy99.faa  Agy99.fna  Agy99.gbk  Agy99.log  Agy99.tbl  Agy99.txt
+
+(prokka) habib@RESNR-5WS7D14:~/Agy99$ grep '>' Agy99.ffn |wc -l
+5523
+grep '>' Agy99.ffn
+
+grep 'gene' Agy99.ffn
+
+head Agy99.tsv
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
