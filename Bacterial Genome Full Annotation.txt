@@ -1,0 +1,141 @@
+Workflow
+|
+Data Acquisition
+|
+QC
+|
+Trim reads
+|
+Genome Assembly - QC
+|
+Polishing -QC
+|
+QC
+|
+Reference guided Scaffolding
+|
+MLST
+|
+AMR
+|
+Genome Annotation
+|
+Comparative analysis
+|
+ANI-Dendogram, Pangenome analysis, Visualising as ring structure
+.....................................
+....................................
+
+module loas anaconda/3
+conda config --add channels conda-forge
+conda config --add channels daler
+conda config --add channels bioconda
+conda config --add channels defaults
+git clone https://github.com/vappiah/bacterial-genomics-tutorial.git
+bacterial-genomics-tutorial
+clear
+conda env create --quit -f environment.yaml
+pip install -r pip-requirements.txt
+sorurce activate bacterial-genome-tutorial
+export PS1
+pip install -r pip-requirements.txt
+clear
+mkdir apps
+wget http://github.com/broadinstitute/pilon/release/download/v1.23/pilon-1.23.jar -0 apps/pilon.jar
+clear
+chmod +x *.{py,sh,pl}
+./download_data.sh
+clear
+ls
+lsdata
+
+................
+QC
+................
+ fastqc
+./qc_raw_reads.sh
+ls
+ls QC_RAW_READS/
+clear
+ls
+___________________________
+
+Trimming
+...............................
+ls
+./trim_read.sh
+ls
+ls trimmed_reads/
+./qc_trimmed_reads.sh
+clear
+...................................
+Genome Assembly
+.........................
+./assemble.sh
+ls p7741_SPADES_OUT/
+CLEAR
+.......................
+./polish.sh
+ls
+..................
+./qc_assembly.sh
+ls
+ls QC_ASSEMBLY/
+.....................................
+./recorder_contigs.sh
+ls
+ls genomes
+ls
+clear
+./mlst.sh
+ls
+clear
+./amr.sh
+./annotated.sh
+ls
+ls p7741_annotation/
+ls
+ls p7741_annotation/
+ls genomes
+ls fenomes|wc -l
+clear
+./dendogram.sh
+clear
+ls
+ls dendogram
+ls dendogram/figures/
+nano get_genome_gff.sh
+./get_
+lsgffs
+ls
+clear
+./get_pangenome
+ls
+ls pangenome/
+python gene_count_summary.py p7741 Agy99 Lifelandii panegenome/gene_presence_absence.csv
+ls
+python gene_count_summary.jpg p7741_Agy99_Lifelandii.jpg
+python gene_count_summary.py p7741 H37Rv Lifelandii pangenome/gene_presence_absence.csv
+ls
+mv gene_count_summary.jpg p7741_H37Rv_Lifelandii.jpg
+......................
+clear
+./zip_result.sh
+ls
+..........................
+Tools used in this pipeline
+Software Package Manager- Anaconda
+QC of reads - FastQC
+Trimming --Sickle
+Genome Assembly --SPAdes
+Polishing --Pilon
+QC of draft assembly & polished --QUAST
+Reference guided scaffolding --RagTag
+MLST---- mlst
+AMR --abricate
+Genome Annotation --Prokka
+ANI-Dendrogram --dREP
+Pangenome Analysis --Roary
+Genome Visualization in ring structure --BRIG
+
+
