@@ -1,0 +1,13 @@
+mkdir assembly
+cd assembly
+wget  http://ftp.fastagz
+ls
+fastaq.gz
+module load bioinfo/spades/3.11
+spades.py -h
+spades.py --careful -o SPADES_OUT -1 p7741_R1.sataq.gz -2 p7741_R2.fastq.gz
+Thank you for using SPAdes!
+ls 
+ls SPADES_OUT
+grep'>' SPADES_OUT/contigs.fasta |wc -l
+2661
