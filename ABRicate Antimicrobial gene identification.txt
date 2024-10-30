@@ -1,0 +1,61 @@
+Identify antimicrobial resistant genes USING AbRicate
+
+1)What is Antimicrobial resistant (AMR)?
+2. Groups of Antimicrobial agents
+3. Practicals: Identification of AMR genes in genomic data using ABRicate software
+-PC requirement
+-install ABRicate software
+-Download example data
+- Run ABRicate on the data
+-Interpret result
+-Obtain information about the hit genes in NCBI databases
+.....................................
+What is Antimicrobial Resistance (AMR)?
+--Ocur when microbes develop mechanism that shield them from the effect of antimicrobial agents
+---Some microbes pass on their drug-resistant to others
+Antimicrobial Groups
+....
+1)Macrolides            1) Streptogramins	1)Tetracyclines
+2)Lincosamides		2) Beta Lactams		2)Chloramphenicol
+3)Sulfonamides		3) Glycopeptides	3) Oxazolidinones
+4) Amino glycosides	4) Lipoptetides		4) Trimethoprim
+5) Quinolones
+
+Tools for identification of AMR genes
+
+ABRicate
+
+Requirement 
+Linux PC
+Anaconda Package manager
+
+Conda config --add channel bioconda
+conda --add channels conda-forge
+conda confif --show 
+Channels:
+-conda-forge
+-bioconda
+-deafaults
+conda create -n AMR abricate
+yes
+downloading package
+conda activate AMR
+clear
+conda activate AMR
+abricate
+downloades SPAdes contig.fasta
+cd desktop
+ls
+spades_contig.fasta
+abricate --list
+Run abricate to search AMR gene
+abricate
+ SPAdes_contigs.fasta --db ncbi --csv > AMR.csv
+found 6 genes in SPADes
+Done
+ls
+AMR.csv SPAdes_contigs.fasta
+head AMR.csv
+.................
+view and Intepret
+		
