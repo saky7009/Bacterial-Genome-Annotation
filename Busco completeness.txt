@@ -1,0 +1,69 @@
+BUSCO completeness
+
+1. Installation of BUSCO
+2. Data acquisition
+3. Running BUSCO
+4. Interpreting the Result
+5. Visualizing the Result
+
+..............................
+
+Linux
+Mamba/Micromamba
+....................
+mamba create -n busco busco -c bioconda -c conda-forge -c deafults
+Yes
+clear
+mamba activate busco
+mmkdir busco_project
+cd busco_project/
+wget http://github/Genome_Assemblies_Salmonella.zip
+downloaded
+clear
+ls
+Genome_Assemblies_Salmonella.zip
+ls
+salmonella.fasta
+cat file_info.txt
+clear
+mkdir genomes
+mv *.fasta genomes
+ls
+ls genomes
+busco --list-datasets
+downloading
+clear
+ls genomes/
+fasta
+busco -m genome -i genomes/CVm_N31384.fasta -0 CVM_N#_busco -l enterobacterales odb10
+
+Runing.....Complete
+1)comple busco
+2)complete single copy busco
+3)Complete and duplicate copy busco
+ls
+ls CVM_N31384_busco/
+.....................
+plot
+ls
+nano run_busco.sh
+#create a directory to store the summaries
+mkdir busco_summaries
+#define the linage 
+Linage=enterobacterales_odb10
+for sample in CVm_N31384 JT_01 N55391 RSK2980
+do
+busco -m genome -i genome/"$sample".fasta - 0 "$sample"_busco -l "$lineage"
+cp "$sample"_busco/short_summary.*."$linage"."$sample"*.txt busco_summaries 
+done
+
+chomd +x run_busco.sh
+rm -fr CVm_N31384 busco
+.......
+nano run_busco.sh
+bash run_busco.sh
+ls
+ls -d *_busco
+ls busco_summaries
+generate_plot.py -wd busco summaries
+
