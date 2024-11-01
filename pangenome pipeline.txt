@@ -1,0 +1,92 @@
+Pangenome Analysis roary
+..............................
+1) Meaning of the term "Pangenome"
+2) Importance of Pangenome Analysis & Available tools.
+3) Lab Session: Pangenome Analysis (Using roary)
+- PC Requirements.
+-Setting up analysis enviroment (install and configeration of Software)
+-Download genome (from NCBI)
+-Annotating the genomes using Prokka to generate gff files.
+-Aggregrate gff files from the annotated genomes.
+-perform the pangenome analysis using roary.
+4. Interpreiting the results.
+
+What is Pangenome?
+The term Pangenome was coined by HErve and other colleges and refer to the pool of genes common to or different among multiple strain of species.
+Why pangenome analysis?
+--understand genome diversity, population sturucture, and evoulation changes in strain under study
+-identify genes that ar common in all genomes under study
+--identify gene that are absent in some strains
+--identify species- specific or strain-specific genes.
+Pangenomic tools
+conda cofig add channels r
+conda config --add channels conda-forge
+conda config --add channels bioconda 
+conda config --show channels
+conda create -n pangenome prokka roary
+Y
+conda activated pangenome 
+Set you workinf directory
+Cd Desktop/
+Download python script
+
+wget http://rorary plot
+ls
+roary plot.py
+pip install numpy  --user 
+requirement already satisfied
+pip install matpotlib --user
+pip install seaborn --user
+pip install pandas --user
+pip install biopython --user
+colecting biopython
+mkdir sequences
+ls
+roary_plots.py sequences
+mkdir sequences
+ls sequences
+six sequences
+ls sequences/*.fasta |wc -l
+mkdir giffs
+prokka --cpus 4 --kingdom bacteria --prefix V521 --locustag v521 sequences/v521.fasta
+share and enjoy
+ls
+ls v521
+cp v521/v521.gffs/
+ls gffs
+ 
+cp M48/M48.gffs/
+ls gffs
+six genomes
+perform pangenome analysis using Roary
+clear
+roary
+clear
+roary -f roaryresult -p 4 -e -n -v --maft gffs/*.gff
+ls
+ls roaryresult/
+FasTree -nt -gtr roar roaryresult/core_gene_alignment.aln > roaryresult/mytree.newick
+ls
+python roary_plots.py --roaryresult/mytree.newick roaryresult/gene_presence_absence.csv
+ls
+my pangenome*.png roaryresult/
+ls
+python roary_plots.py --lebels --formate svg roaryresult/ mytree.newick roaryresult/gene_presence_absence.csv
+ls
+ls roaryresult/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
