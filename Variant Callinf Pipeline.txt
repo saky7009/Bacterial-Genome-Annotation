@@ -1,0 +1,107 @@
+Variant Callinf Pipeline
+GATK Best Practice Germline short Variant discovery
+(SNPs + Indels) Workflow
+
+Aim: Start with sequencing reads and ferform a series of step to determine a set of genetic variants
+Intuition- Create a file (VCF) with variants from the data
+
+DNA sample - Raw Sequence (Fasta/Fastaq) - Aligned Reads (BAM/SAm) - Variant calls(VCF)
+
+What is genome analysis toolkit (GATK)?
+-- Package of command -line tools (written in java)
+--GATK tools can be used inviduals or chaind together in to complete workflows
+--contains multiple tools for
+--NGS data processing
+--Genoptyping and variant discovery
+--Variant filtering and evaluation
+---Ever evolving and adapting to emerging sequencing technologies
+---GATK provide end to end workflows, called GATK best Practices, tailored for specific use cases
+--- The GATK is designed to run on Linux and other POSIX-compatible platforms, which includes MacOSX. Windows systems are not supported. The major system Requird is Java 1.8;
+
+Raw Unmapped Reads
+uBAM or FASTQ
+|
+Map to reference
+|
+RaW Mapped Reads
+BAM
+|
+MarkDuplicatesSpark
+|
+Recalibarate Base
+Quality Scores
+|Analysis Ready Reads
+BAN
+|
+GATK Best Practices
+|
+Tools:
+GATK4, 
+|
+BWA, 
+|
+FastaqC
+|
+Samtools,
+
+|
+MultiQA
+
+.........................
+Somatic VS (germline variants-genetic)
+mkdir file
+aline_rods rods script_a resolt dota
+
+habib@RESNR-5WS7D14:~$ mkdir aligned_reads script result data
+mkdir: cannot create directory ‘data’: File exists
+habib@RESNR-5WS7D14:~$ ls scripts
+habib@RESNR-5WS7D14:~$  wget -P ${rods} ftp://ftp.ncbi.nlm.nih.gov/1000genomes/ftp/phase3/data/HG00096/sequence_read/SRR062634_1.filt.fastq.gz
+
+wget -p /home/habib/rods ftp://ftp-trce.ncbi.nih.gov/100genomes/ftp/phase3/data/HG00096/sequen
+ce_read/SRR062634_2.filt.fastq.gz
+Downloading reference file....
+
+ wget -P /home/habib/rods http://hgdownload.soe.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz
+gunzip /home/habib/rods/hg38.fa.gz
+samtools faidx /home/habib/rods/hg38.fa
+
+wget https://github.com/broadinstitute/gatk/releases/download/4.6.1.0/gatk-4.6.1.0.zip
+
+./gatk CreateSequenceDictionary R=~/home/habib/rods/hg38.fa 0=~/home/habib/rods/hg38.dict
+
+wget -P /home/habib/rods https://storage.googleeapis.com/genomics-public-data/resources/broad/hg38/v0/Homo_sapiens_assembly38.dbsnp138.vcf
+
+wget -P /home/habib/rods https://storage.googleapis.com/genomics-public-data/resources/broad/hg38/v0/Homo_sapiens_assembly38.dbsnp138.vcf.idx
+
+ref="/home/habib/rods/hg38.fa
+known_sites="/home/habib/rods/Homo_sapiens_assembly38.dbsnp138.vcf"
+aligned_reads="/home/habib/VC/aligned_reads"
+reads="/home/habib/VC/reads"
+result="/home/habib/VC/results"
+data="/home/habib/VC/data"
+--------------------step q1
+QC step
+
+fastqc ${rods}/SRR062634_1.filt.fastq.gz -o ${rods}/
+fastqc ${rods}/SRR062634_2.filt.fastq.gz -o ${rods}/
+
+step 2 alignment
+
+bwa index /home/habib/rods/hg38.fa
+
+
+
+bwa mem -t 4 -R "@RG\tID:SRR062634\PL:ILLUMINA\tSM:SRR062634" ${ref} ${rods}/SRR062634_1.filt.fasq.gz ${rods}/SRR062634_2.filt.fastq.gz > ${aline_rods}/SRR062634.paired.sam
+
+
+
+
+
+
+
+
+
+
+
+
+
