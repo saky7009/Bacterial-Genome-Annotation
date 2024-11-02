@@ -1,0 +1,34 @@
+
+
+install.packages("DiagrammeR")
+library(DiagrammeR)
+
+
+
+grViz("
+digraph workflow {
+    graph [layout = dot, rankdir = TB]
+    node [shape = rectangle, style = filled, fillcolor = LightBlue]
+
+    A [label = 'Raw FASTQ Data']
+    B [label = 'Quality Control (FastQC)']
+    C [label = 'Read Trimming (Trimmomatic)']
+    D [label = 'Assembly (SPAdes)']
+    E [label = 'Functional Annotation (DIAMOND)']
+    F [label = 'Taxonomic Classification (Kraken2)']
+    G [label = 'Abundance Estimation (Bracken)']
+    H [label = 'Generate MultiQC Report']
+    I [label = 'Results Interpretation']
+
+    A -> B
+    B -> C
+    C -> D
+    D -> E
+    D -> F
+    F -> G
+    B -> H
+    G -> I
+    E -> I
+    H -> I
+}
+")
